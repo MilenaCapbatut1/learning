@@ -63,5 +63,11 @@ exports.PlaywrightDevPage = class PlaywrightDevPage {
   }
   async clickOnTheButtonAcceptCookies() {
    await this.page.click(buttonAcceptCookies);
-}
+  }
+  
+  async assertCorrectSearchResultsPageIsOpened(searchRequest) {
+   await expect(page).toHaveURL(`https://answear.ua/ru/k/vona?q=${searchRequest}`, { timeout: 5000 });
+   await this.waitForAnElementSportswear();
+   await expect(page.locator('//span[text()="Страница"]')).toBeVisible();
+  }
 }
