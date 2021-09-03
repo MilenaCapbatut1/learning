@@ -34,11 +34,13 @@ test.describe('Test_Answer_Site', () => {
   
     test ('Check possibility to search on the page', async ({page}) => {
     const productPage= new PlaywrightDevPage(page);
+     
     await page.waitForTimeout(4000);
     await productPage.clickOnTheButtonAcceptCookies();
     await productPage.clickOnSearchField();
     await productPage.enterText('Nike');
     await productPage.pressSubmitButton('Enter');
+     
     await expect(page).toHaveURL('https://answear.ua/ru/k/vona?q=Nike', { timeout: 5000 });
     await productPage.waitForAnElementSportswear();
     await expect(page.locator('//span[text()="Страница"]')).toBeVisible();
