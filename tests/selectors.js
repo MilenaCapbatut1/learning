@@ -25,8 +25,13 @@ exports.PlaywrightDevPage = class PlaywrightDevPage {
   }
    async enterText(text) {
     await this.page.fill(searchfield, text);
- 
   }
+  
+  async enterSearchRequest(text) {
+    await this.page.click(searchfield);
+    await this.enterText(text);
+  }
+  
   async pressSubmitButton(key) {
   await this.page.press(searchfield, key);
   }
